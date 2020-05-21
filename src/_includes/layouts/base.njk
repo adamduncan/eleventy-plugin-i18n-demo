@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}" dir="{{ dir }}">
+<head prefix="og: http://ogp.me/ns">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1726c">
+
+  <title>eleventy-plugin-i18n — {{ title }}</title>
+
+  <style>
+    {# Demo styles #}
+    body { font-family: sans-serif; display: flex; flex-direction: column; line-height: 1.4; margin: 0; min-height: 100vh }
+    header, main, footer { padding: 2rem }
+    header, footer { background: #eee }
+    main { flex: 1 }
+    nav a { margin-right: 1em; }
+    [aria-current] { font-weight: bold }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span>{{ site.title }}</span>
+    <nav aria-label="{% i18n 'website' %}">
+      <a href="/{{ locale }}/">{% i18n 'homepage' %}</a>
+      <a href="/{{ locale }}/posts/">{% i18n 'posts' %}</a>
+    </nav>
+  </header>
+
+  <main>
+    {{ content | safe }}
+  </main>
+
+  <footer>
+    {% include 'components/language-selector.njk' %}
+  </footer>
+
+</body>
+</html>
