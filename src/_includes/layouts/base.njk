@@ -22,9 +22,9 @@
 
   <header>
     <span>{{ site.title }}</span>
-    <nav aria-label="{% i18n 'website' %}">
-      <a href="/{{ locale }}/">{% i18n 'homepage' %}</a>
-      <a href="/{{ locale }}/posts/">{% i18n 'posts' %}</a>
+    <nav aria-label="{{ 'website' | i18n }}">
+      <a href="/{{ locale }}/">{{ 'homepage' | i18n }}</a>
+      <a href="/{{ locale }}/posts/">{{ 'posts' | i18n }}</a>
     </nav>
   </header>
 

@@ -5,14 +5,15 @@
 const chalk = require('chalk');
 const get = require('lodash.get');
 
-module.exports = function (term, desiredLocale, options = {}, page = {}) {
+module.exports = function (term, desiredLocale, options = {}, page) {
   const {
     dictionaries = {},
     fallbackLocale: fallbackLocale = 'en-GB'
   } = options;
 
   // Use explicit `locale` argument if passed in, otherwise infer it from URL prefix segment
-  const contextLocale = desiredLocale || page.url.split('/')[1];
+  const contextLocale =
+    desiredLocale || page ? page.url.split('/')[1] : undefined;
   const locale = contextLocale;
 
   // Preferred translation

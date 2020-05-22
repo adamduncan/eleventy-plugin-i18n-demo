@@ -2,8 +2,8 @@ module.exports = {
   // General
   hello: {
     'ar-AE': 'مرحبا',
-    'en-GB': 'Hello!',
-    'es-ES': '¡Hola!'
+    'en-GB': 'Hello',
+    'es-ES': 'Hola'
   },
   website: {
     'ar-AE': 'موقع الكتروني',

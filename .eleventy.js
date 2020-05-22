@@ -2,9 +2,11 @@ const i18n = require('./src/_11ty/shortcodes/i18n.js');
 const dictionaries = require('./src/_data/i18n');
 
 module.exports = function (eleventyConfig) {
-  // Shortcodes
+  // Filters
   // We'll be able to replace this with addPlugin() once eleventy-plugin-i18n is published
-  eleventyConfig.addShortcode('i18n', function (term, locale) {
+  eleventyConfig.addFilter('i18n', function (term, locale) {
+    // Here we need to determine if filter is being used on page, or in include, respectively
+    const page = this.page || this.ctx.page;
     return i18n(
       term,
       locale,
@@ -12,8 +14,14 @@ module.exports = function (eleventyConfig) {
         dictionaries,
         fallbackLocale: 'en-GB'
       },
-      this.page
+      page
     );
+  });
+
+  // TEMP demo of what could be an i18n-aware plural package?
+  eleventyConfig.addFilter('pluralize', function (term, count = 1) {
+    // Poorman's pluralize for now...
+    return count === 1 ? term : `${term}s`;
   });
 
   // Browsersync
@@ -37,6 +45,7 @@ module.exports = function (eleventyConfig) {
   return {
     dir: {
       input: 'src'
-    }
+    },
+    markdownTemplateEngine: 'njk'
   };
 };
