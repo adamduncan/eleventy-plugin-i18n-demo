@@ -1,14 +1,14 @@
 module.exports = [
   {
     label: 'عربى',
-    code: 'ar-ae'
+    code: 'ar-AE'
   },
   {
     label: 'English',
-    code: 'en-gb'
+    code: 'en-GB'
   },
   {
     label: 'Español',
-    code: 'es-es'
+    code: 'es-ES'
   }
 ];

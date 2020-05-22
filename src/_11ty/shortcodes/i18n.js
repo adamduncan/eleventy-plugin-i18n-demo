@@ -8,12 +8,12 @@ const get = require('lodash.get');
 module.exports = function (term, desiredLocale, options = {}, page = {}) {
   const {
     dictionaries = {},
-    fallbackLocale: fallbackLocale = 'en-gb'
+    fallbackLocale: fallbackLocale = 'en-GB'
   } = options;
 
   // Use explicit `locale` argument if passed in, otherwise infer it from URL prefix segment
   const contextLocale = desiredLocale || page.url.split('/')[1];
-  const locale = contextLocale.toLowerCase();
+  const locale = contextLocale;
 
   // Preferred translation
   const translation = get(dictionaries, `[${term}][${locale}]`);
@@ -29,10 +29,7 @@ module.exports = function (term, desiredLocale, options = {}, page = {}) {
   }
 
   // Fallback translation
-  const fallbackTranslation = get(
-    dictionaries,
-    `[${term}][${fallbackLocale.toLowerCase()}]`
-  );
+  const fallbackTranslation = get(dictionaries, `[${term}][${fallbackLocale}]`);
 
   if (fallbackTranslation !== undefined) {
     return fallbackTranslation;

@@ -10,7 +10,7 @@ module.exports = function (eleventyConfig) {
       locale,
       {
         dictionaries,
-        fallbackLocale: 'en-gb'
+        fallbackLocale: 'en-GB'
       },
       this.page
     );
@@ -24,7 +24,7 @@ module.exports = function (eleventyConfig) {
         bs.addMiddleware('*', (req, res) => {
           if (req.url === '/') {
             res.writeHead(302, {
-              location: '/en-gb/'
+              location: '/en-GB/'
             });
             res.end();
           }

@@ -1,44 +1,44 @@
 module.exports = {
   // General
   hello: {
-    'ar-ae': 'مرحبا',
-    'en-gb': 'Hello!',
-    'es-es': '¡Hola!'
+    'ar-AE': 'مرحبا',
+    'en-GB': 'Hello!',
+    'es-ES': '¡Hola!'
   },
   website: {
-    'ar-ae': 'موقع الكتروني',
-    'en-gb': 'Website',
-    'es-es': 'Sitio web'
+    'ar-AE': 'موقع الكتروني',
+    'en-GB': 'Website',
+    'es-ES': 'Sitio web'
   },
   select_language: {
-    'ar-ae': 'اختار اللغة',
-    'en-gb': 'Select language',
-    'es-es': 'Seleccione el idioma'
+    'ar-AE': 'اختار اللغة',
+    'en-GB': 'Select language',
+    'es-ES': 'Seleccione el idioma'
   },
 
   // Navigation
   homepage: {
-    'ar-ae': 'الصفحة الرئيسية',
-    'en-gb': 'Homepage',
-    'es-es': 'Página principal'
+    'ar-AE': 'الصفحة الرئيسية',
+    'en-GB': 'Homepage',
+    'es-ES': 'Página principal'
   },
   posts: {
-    'ar-ae': 'المشاركات',
-    'en-gb': 'Posts',
-    'es-es': 'Publicaciones'
+    'ar-AE': 'المشاركات',
+    'en-GB': 'Posts',
+    'es-ES': 'Publicaciones'
   },
 
   // Nested organisation example
   actions: {
     click: {
-      'ar-ae': 'انقر',
-      'en-gb': 'Click',
-      'es-es': 'Hacer clic'
+      'ar-AE': 'انقر',
+      'en-GB': 'Click',
+      'es-ES': 'Hacer clic'
     },
     loading: {
-      'ar-ae': 'جار التحميل',
-      'en-gb': 'Loading',
-      'es-es': 'Cargando'
+      'ar-AE': 'جار التحميل',
+      'en-GB': 'Loading',
+      'es-ES': 'Cargando'
     }
   }
 };
