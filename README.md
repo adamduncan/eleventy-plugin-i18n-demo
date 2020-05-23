@@ -7,6 +7,7 @@ Demo site for [`eleventy-plugin-i18n`](https://github.com/adamduncan/eleventy-pl
 - [x] Leverage Eleventy's data cascade to build a clever, language-aware `{{ 'hello' | i18n }}` filter, backed by multilingual dictionary translations.
 - [ ] Package the filter up into a plugin, so can be easily configured and used in any Eleventy site.
 - [ ] Write up tutorial to build on some great concepts ([multilingual](https://www.webstoemp.com/blog/multilingual-sites-eleventy/), [language toggle](https://www.webstoemp.com/blog/language-switcher-multilingual-jamstack-sites/)) in this area. Dive further into how to architect and implement multilingual Eleventy sites, and leverage the plugin (e.g. [smart language switching](https://github.com/adamduncan/eleventy-plugin-i18n-demo/blob/master/src/_includes/components/language-selector.njk)).
+- [ ] Could we add a `data` param and interpolated values into the translations? `{ 'hello_user': 'Hello, {{name}}!' }`
 - [ ] Explore shipping additional `pluralize` filter for i18n usage `{{ 'hello' | i18n | pluralize(3) }}` (Awesome suggestion from [@alexcarpenter](https://github.com/alexcarpenter)).
 
 ## TL;DR just riffin'

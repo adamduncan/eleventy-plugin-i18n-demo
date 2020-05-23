@@ -12,9 +12,10 @@ module.exports = function (term, desiredLocale, options = {}, page) {
   } = options;
 
   // Use explicit `locale` argument if passed in, otherwise infer it from URL prefix segment
-  const contextLocale =
-    desiredLocale || page ? page.url.split('/')[1] : undefined;
-  const locale = contextLocale;
+  const url = get(page, 'url', '');
+  const contextLocale = desiredLocale || url.split('/')[1];
+
+  const locale = contextLocale || fallbackLocale;
 
   // Preferred translation
   const translation = get(dictionaries, `[${term}][${locale}]`);
@@ -24,7 +25,7 @@ module.exports = function (term, desiredLocale, options = {}, page) {
   } else {
     console.warn(
       chalk.yellow(
-        `Warning: Could not find i18n translation for '${term}' in locale: ${contextLocale}. Using fallback.`
+        `Warning: Could not find i18n translation for '${term}' in '${contextLocale}' locale. Using fallback.`
       )
     );
   }
@@ -37,7 +38,7 @@ module.exports = function (term, desiredLocale, options = {}, page) {
   } else {
     console.warn(
       chalk.red(
-        `Not found: Could not find i18n translation for '${term}' in fallback locale: ${fallbackLocale}.`
+        `Not found: Could not find i18n translation for '${term}' in '${fallbackLocale}' fallback locale.`
       )
     );
     return term;
