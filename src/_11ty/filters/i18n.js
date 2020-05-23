@@ -4,16 +4,23 @@
 // This file is what will go off and become eleventy-plugin-i18n...
 const chalk = require('chalk');
 const get = require('lodash.get');
+const templite = require('templite');
 
-module.exports = function (term, desiredLocale, options = {}, page) {
+module.exports = function (
+  term,
+  data = {},
+  localeOverride,
+  pluginOptions = {},
+  page
+) {
   const {
     dictionaries = {},
     fallbackLocale: fallbackLocale = 'en-GB'
-  } = options;
+  } = pluginOptions;
 
   // Use explicit `locale` argument if passed in, otherwise infer it from URL prefix segment
   const url = get(page, 'url', '');
-  const contextLocale = desiredLocale || url.split('/')[1];
+  const contextLocale = localeOverride || url.split('/')[1];
 
   const locale = contextLocale || fallbackLocale;
 
@@ -21,7 +28,7 @@ module.exports = function (term, desiredLocale, options = {}, page) {
   const translation = get(dictionaries, `[${term}][${locale}]`);
 
   if (translation !== undefined) {
-    return translation;
+    return templite(translation, data);
   } else {
     console.warn(
       chalk.yellow(
@@ -34,7 +41,7 @@ module.exports = function (term, desiredLocale, options = {}, page) {
   const fallbackTranslation = get(dictionaries, `[${term}][${fallbackLocale}]`);
 
   if (fallbackTranslation !== undefined) {
-    return fallbackTranslation;
+    return templite(fallbackTranslation, data);
   } else {
     console.warn(
       chalk.red(

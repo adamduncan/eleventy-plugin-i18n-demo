@@ -1,10 +1,5 @@
 module.exports = {
   // General
-  hello: {
-    'ar-AE': 'مرحبا',
-    'en-GB': 'Hello',
-    'es-ES': 'Hola'
-  },
   website: {
     'ar-AE': 'موقع الكتروني',
     'en-GB': 'Website',
@@ -14,6 +9,18 @@ module.exports = {
     'ar-AE': 'اختار اللغة',
     'en-GB': 'Select language',
     'es-ES': 'Seleccione el idioma'
+  },
+
+  // Greetings
+  hello: {
+    'ar-AE': 'مرحبا',
+    'en-GB': 'Hello',
+    'es-ES': 'Hola'
+  },
+  hello_name: {
+    'ar-AE': '{{ name }}مرحبا',
+    'en-GB': 'Hello, {{ name }}!',
+    'es-ES': '¡Hola {{ name }}!'
   },
 
   // Navigation
