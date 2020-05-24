@@ -1,5 +1,5 @@
 const i18n = require('./src/_11ty/filters/i18n.js');
-const dictionaries = require('./src/_data/i18n');
+const translations = require('./src/_data/i18n');
 
 module.exports = function (eleventyConfig) {
   // Filters
@@ -12,8 +12,10 @@ module.exports = function (eleventyConfig) {
       data,
       locale,
       {
-        dictionaries,
-        fallbackLocale: 'en-GB'
+        translations,
+        fallbackLocales: {
+          '*': 'en-GB'
+        }
       },
       page
     );
@@ -27,6 +29,7 @@ module.exports = function (eleventyConfig) {
 
   // Browsersync
   // Redirect from root to default language root during --serve
+  // Can also be handled by netlify.toml?
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function (err, bs) {

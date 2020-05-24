@@ -5,7 +5,7 @@
   <p>{{ 'select_language' | i18n }}:</p>
   <ul>
     {% for locale in locales -%}
-      <li><a href="/{{ locale.code }}/{{ pageUrl }}">{{ locale.label }}</a></li>
+      <li><a href="/{{ locale.code }}/{{ pageUrl }}" rel="alternate" hreflang="{{ locale.code }}">{{ locale.label }}</a></li>
     {% endfor -%}
   </ul>
 {% endif %}

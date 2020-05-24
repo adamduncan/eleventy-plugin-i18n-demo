@@ -7,47 +7,48 @@ const get = require('lodash.get');
 const templite = require('templite');
 
 module.exports = function (
-  term,
+  key,
   data = {},
   localeOverride,
   pluginOptions = {},
   page
 ) {
   const {
-    dictionaries = {},
-    fallbackLocale: fallbackLocale = 'en-GB'
+    translations = {},
+    fallbackLocales: fallbackLocales = {}
   } = pluginOptions;
 
   // Use explicit `locale` argument if passed in, otherwise infer it from URL prefix segment
   const url = get(page, 'url', '');
-  const contextLocale = localeOverride || url.split('/')[1];
-
-  const locale = contextLocale || fallbackLocale;
+  const contextLocale = url.split('/')[1];
+  const locale = localeOverride || contextLocale;
 
   // Preferred translation
-  const translation = get(dictionaries, `[${term}][${locale}]`);
+  const translation = get(translations, `[${key}][${locale}]`);
 
   if (translation !== undefined) {
     return templite(translation, data);
-  } else {
-    console.warn(
-      chalk.yellow(
-        `Warning: Could not find i18n translation for '${term}' in '${contextLocale}' locale. Using fallback.`
-      )
-    );
   }
 
   // Fallback translation
-  const fallbackTranslation = get(dictionaries, `[${term}][${fallbackLocale}]`);
+  const fallbackLocale =
+    get(fallbackLocales, locale) || get(fallbackLocales, '*');
+  const fallbackTranslation = get(translations, `[${key}][${fallbackLocale}]`);
 
   if (fallbackTranslation !== undefined) {
-    return templite(fallbackTranslation, data);
-  } else {
     console.warn(
-      chalk.red(
-        `Not found: Could not find i18n translation for '${term}' in '${fallbackLocale}' fallback locale.`
+      chalk.yellow(
+        `[i18n] Could not find '${key}' in '${locale}'. Using '${fallbackLocale}' fallback.`
       )
     );
-    return term;
+    return templite(fallbackTranslation, data);
   }
+
+  // Not found
+  console.warn(
+    chalk.red(
+      `[i18n] Translation for '${key}' in '${locale}' not found. No fallback locale specified.`
+    )
+  );
+  return key;
 };
