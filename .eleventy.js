@@ -1,24 +1,13 @@
-const i18n = require('./src/_11ty/filters/i18n.js');
+const i18n = require('eleventy-plugin-i18n');
 const translations = require('./src/_data/i18n');
 
 module.exports = function (eleventyConfig) {
-  // Filters
-  // We'll be able to replace this with addPlugin() once eleventy-plugin-i18n is published
-  eleventyConfig.addFilter('i18n', function (term, data, locale) {
-    // Here we need to determine if filter is being used on page, or in include, respectively
-    const page = this.page || this.ctx.page;
-    return i18n(
-      term,
-      data,
-      locale,
-      {
-        translations,
-        fallbackLocales: {
-          '*': 'en-GB'
-        }
-      },
-      page
-    );
+  // Plugins
+  eleventyConfig.addPlugin(i18n, {
+    translations,
+    fallbackLocales: {
+      '*': 'en-GB'
+    }
   });
 
   // TEMP demo of what could be an i18n-aware plural package?
