@@ -21,7 +21,7 @@
   "homepage": "https://github.com/adamduncan/eleventy-plugin-i18n-demo#readme",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
+    "@11ty/eleventy": "^0.11.1",
     "cross-env": "^7.0.2",
     "lodash.get": "^4.4.2",
     "prettier": "^2.0.5",
